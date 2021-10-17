@@ -1,0 +1,8 @@
+XTerm*foreground: #008000
+XTerm*background: #000000
+XTerm*saveLines: 2000
+XTerm*faceName: Ubuntu mono
+XTerm*faceSize: 12
+XTerm*rightScrollBar: true
+XTerm*scrollBar: true
+Xterm*scrollTtyOutput: false

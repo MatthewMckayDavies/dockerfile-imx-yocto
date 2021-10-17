@@ -24,6 +24,8 @@ RUN groupadd -g 1000 cmonkey && useradd -u 1000 -g 1000 -ms /bin/bash cmonkey &&
 
 USER cmonkey
 
+COPY --chown=cmonkey:cmonkey .Xdefaults /home/cmonkey
+
 # Git user setup
 RUN git config --global user.email "cmonkey@cmonkey.com"
 RUN git config --global user.name "cmonkey"
