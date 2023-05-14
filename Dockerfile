@@ -10,18 +10,19 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get -y upgrade
 
 # Set up locale
-RUN apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+RUN apt-get install -y locales \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
-
 
 # Install basics
 RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
     build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
     xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
-    pylint3 xterm rsync curl zstd pzstd lz4c lz4 libssl-dev
+    pylint3 xterm rsync curl zstd lz4 libssl-dev
      
-RUN u-boot-tools xsltproc xmlstarlet subversion vim jq sqlite3 srecord tree unzip
+RUN apt-get install -y u-boot-tools xsltproc xmlstarlet subversion vim jq sqlite3 srecord tree unzip
+
+RUN rm -rf /var/lib/apt/lists/*
 
 # User management
 RUN groupadd -g 1000 cmonkey && useradd -u 1000 -g 1000 -ms /bin/bash cmonkey && usermod -a -G sudo cmonkey && usermod -a -G users cmonkey
