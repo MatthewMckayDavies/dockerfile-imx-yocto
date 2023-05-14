@@ -1,13 +1,13 @@
-# dockerfile-ub18-imx6-yocto
-Ubuntu 18.04 i.MX6 (also i.MX8) Yocto development.
+# dockerfile-imx-yocto
+Ubuntu 20.04 i.MX Yocto development.
 
 ## Build image
 
 With or without cache:
 
 ```
-docker image build --rm --no-cache -t mmd/ub18-imx6-yocto .
-docker image build --rm  -t mmd/ub18-imx6-yocto .
+docker image build --rm --no-cache -t mmd/imx-yocto:ub20 .
+docker image build --rm  -t mmd/imx-yocto:ub20 .
 ```
 
 If when building an image with bitbake, there are problems with 'fetch' similart to the error below, it is worth building the image with --no-cache to obtain the latest certificates.
@@ -34,7 +34,7 @@ export LIBGL_ALWAYS_INDIRECT=1
 docker run -it --rm \
 -e DISPLAY=$DISPLAY \
 -v "$PWD"/Yocto:/mnt/Yocto/users -v "$PWD":/home/workspace \
-mmd/ub18-imx6-yocto xterm
+mmd/imx-yocto:ub20 xterm
 ```
 
 ## Run xterm from Ubuntu (native, VirtualBox etc.):
@@ -43,7 +43,7 @@ mmd/ub18-imx6-yocto xterm
 docker run -it --rm \
 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
 -v "$PWD"/Yocto:/mnt/Yocto/users -v "$PWD":/home/workspace \
-mmd/ub18-imx6-yocto xterm
+mmd/imx-yocto:ub20 xterm
 ```
 
 ## Bitbake
