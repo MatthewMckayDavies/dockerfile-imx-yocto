@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker image build --rm --pull -t mmd/imx-yocto:ub20 .
+docker image build --rm --pull -t mmd/imx-yocto:ub16 .
