@@ -10,10 +10,6 @@ docker image build --rm --no-cache -t mmd/imx-yocto:ub20 .
 docker image build --rm  -t mmd/imx-yocto:ub20 .
 ```
 
-If when building an image with bitbake, there are problems with 'fetch' similart to the error below, it is worth building the image with --no-cache to obtain the latest certificates.
-
-fatal: unable to access ' https://source.codeaurora.org/external/imx/linux-imx.git/': server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
-
 
 ## About the image
 
@@ -23,21 +19,7 @@ There is a user 'cmonkey' with uid/gid 1000 which is a member of the sudo group.
 
 In order to use bitbake -c menuconfig, devshell etc. which opens an additional shell, it is necessary to pass the DISPLAY environment variable and possibly also map the unix X11 pipe, see the WSL2 and Ubuntu examples below: 
 
-## Run xterm with VcXsrv from Ubuntu WSL2
-
-See [Ubuntu and WSL graphical apps](https://wiki.ubuntu.com/WSL#Running_Graphical_Applications) for more info.
-
-```
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=1
-
-docker run -it --rm \
--e DISPLAY=$DISPLAY \
--v "$PWD"/Yocto:/mnt/Yocto/users -v "$PWD":/home/workspace \
-mmd/imx-yocto:ub20 xterm
-```
-
-## Run xterm from Ubuntu (native, VirtualBox etc.):
+## Run xterm from Ubuntu or recent WSL2 on Windows 11/10:
 
 ```
 docker run -it --rm \
