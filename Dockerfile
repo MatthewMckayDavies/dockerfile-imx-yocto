@@ -22,6 +22,8 @@ RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
      
 RUN apt-get install -y u-boot-tools xsltproc xmlstarlet subversion vim jq sqlite3 srecord tree unzip
 
+RUN apt-get install -y terminator
+
 RUN rm -rf /var/lib/apt/lists/*
 
 # User management
