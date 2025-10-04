@@ -15,7 +15,7 @@ docker image build --rm  -t mmd/imx-yocto:ub20 .
 
 There is a user 'cmonkey' with uid/gid 1000 which is a member of the sudo group.
 
-/home/workspace is the default folder which may be mapped for example to the host's Eclipse workspace. The Yocto BSP dir on the host, which has previously been obtained via repo init/sync etc. may be mapped to /mnt/Yocto/users.
+/home/workspace is the default folder which may be mapped for example to the host's eclipse workspace. The Yocto BSP dir on the host, which has previously been obtained via repo init/sync etc. can be mapped using -v to any directory in the container (for example /mnt/Yocto/users).
 
 In order to use bitbake -c menuconfig, devshell etc. which opens an additional shell, it is necessary to pass the DISPLAY environment variable and possibly also map the unix X11 pipe, see the WSL2 and Ubuntu examples below: 
 
@@ -26,6 +26,14 @@ docker run -it --rm \
 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
 -v "$PWD"/Yocto:/mnt/Yocto/users -v "$PWD":/home/workspace \
 mmd/imx-yocto:ub20 xterm
+```
+
+## Using terminator
+Terminator is not supported directly, but can be used via the 'custom' terminal configuration of Open Embedded via the local.conf file.
+
+```
+OE_TERMINAL="custom"
+OE_TERMINAL_CUSTOMCMD="terminator --working-directory=${cwd} -T 'OpenEmbbedded Developer Shell' -x"
 ```
 
 ## Bitbake
