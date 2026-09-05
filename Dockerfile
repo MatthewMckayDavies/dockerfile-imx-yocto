@@ -16,13 +16,14 @@ ENV LANG=en_US.utf8
 
 # Install basics
 RUN apt-get install -y gawk wget gcc git libacl1 liblz4-tool diffstat file unzip texinfo gcc-multilib \
-    build-essential chrpath socat cpio python3 python3-pip python3-pexpect python3-subunit \
+    build-essential chrpath socat cpio pylint python3 python3-pip python3-pexpect python3-subunit \
     xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
-    xterm rsync curl zstd lz4 libssl-dev efitools
-     
+    xterm rsync curl zstd lz4 libssl-dev efitools 
+
+RUN apt-get install -y autoconf automake autotools-dev libncurses-dev
 RUN apt-get install -y u-boot-tools xsltproc xmlstarlet subversion vim jq sqlite3 srecord tree
 
-RUN apt-get install -y terminator
+RUN apt-get install -y terminator tmux
 
 RUN rm -rf /var/lib/apt/lists/*
 
