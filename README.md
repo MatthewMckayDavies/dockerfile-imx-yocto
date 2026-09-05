@@ -1,13 +1,13 @@
 # dockerfile-imx-yocto
-Ubuntu 20.04 i.MX Yocto development.
+Ubuntu 22.04 i.MX Yocto development.
 
 ## Build image
 
 With or without cache:
 
 ```
-docker image build --rm --no-cache -t mmd/imx-yocto:ub20 .
-docker image build --rm  -t mmd/imx-yocto:ub20 .
+docker image build --rm --no-cache -t mmd/imx-yocto:ub22 .
+docker image build --rm  -t mmd/imx-yocto:ub22 .
 ```
 
 
@@ -53,3 +53,7 @@ Subsequent builds:
 source setup-environment imx8mqevk_xwayland/
 bitbake imx-image-multimedia
 ```
+
+# imx-manifest
+
+The NXP BSP Repo manifests can be found in the [imx-manifest](https://github.com/nxp-imx/imx-manifest) github project.
